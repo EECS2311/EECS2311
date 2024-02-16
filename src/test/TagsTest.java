@@ -16,6 +16,9 @@ import domain.logic.Tag;
 
 class TagsTest {
 
+	/**
+	 * Tests the functionality of the GenericTag and TagUtility class with the FoodGroup enum.
+	 */
 	@Test
 	void FoodGroupTest() {
 		FoodGroup g = FoodGroup.GRAIN;
@@ -51,6 +54,9 @@ class TagsTest {
 		
 	}
 	
+	/**
+	 * Tests the functionality of the GenericTag and TagUtility class with the FoodFreshness enum.
+	 */
 	@Test
 	void FoodFreshnessTest() {
 		FoodFreshness e = FoodFreshness.EXPIRED;

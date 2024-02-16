@@ -34,4 +34,17 @@ public class Container {
 	public void setName(String nameOfContainer) {
 		this.name = nameOfContainer;
 	}
+	
+	/**
+	 * Returns a deep copy of the container's list of items
+	 * @return a deep copy of the container's list of items
+	 */
+	public ArrayList<Item> getListofItems() {
+		ArrayList<Item> itemsCopy = new ArrayList<Item>();
+		for (Item i : listOfItems) {
+			Item copy = Item.getInstance(i);
+			itemsCopy.add(copy);
+		}
+		return itemsCopy;
+	}
 }
