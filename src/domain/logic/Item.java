@@ -160,7 +160,7 @@ public class Item implements Comparable<Item>{
 
     // Helper method to parse date strings
     private static Date parseDate(String dateString) {
-        SimpleDateFormat formatter = new SimpleDateFormat("dd-MMMM-yyyy", Locale.ENGLISH);
+        SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy", Locale.ENGLISH);
         try {
             return formatter.parse(dateString);
         } catch (ParseException e) {

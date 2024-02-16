@@ -33,7 +33,7 @@ public class AddItemPanel extends JPanel {
         add(itemNameField);
         add(new JLabel("Quantity:"));
         add(itemQuantityField);
-        add(new JLabel("Expiration Date (dd-MMMM-yyyy):"));
+        add(new JLabel("Expiration Date (dd-MMM-yyyy):"));
         add(itemExpiryField);
         add(addButton);
 
