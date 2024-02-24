@@ -228,10 +228,15 @@ public class Item implements Comparable<Item>{
     /**
      * Gets the food freshness tag.
      *
-     * @return The food freshness tag.
+     * @return The food freshness tag if it exists, or null otherwise.
      */
     public GenericTag<FoodFreshness> getFoodFreshnessTag() {
-        return new GenericTag<>(this.foodFreshnessTag);
+        // Directly return null if foodFreshnessTag is null, avoiding NullPointerException
+        if (this.foodFreshnessTag == null) {
+            return null;
+        }
+        // Otherwise, return a new GenericTag with the existing tag value
+        return new GenericTag<>(this.foodFreshnessTag.getTag());
     }
 
     /**
@@ -350,21 +355,20 @@ public class Item implements Comparable<Item>{
      */
     @Override
     public int compareTo(Item other) {
-        // Handle null expiryDate
-        if (expiryDate == null && other.expiryDate != null) return -1;
-        if (expiryDate != null && other.expiryDate == null) return 1;
-        if (expiryDate == null && other.expiryDate == null) return 0;
+        // Handle null expiryDate for both this item and the other item
+        if (this.expiryDate == null && other.expiryDate != null) return -1;
+        if (this.expiryDate != null && other.expiryDate == null) return 1;
+        if (this.expiryDate == null && other.expiryDate == null) return 0;
 
-        // Compare by expiryDate when both are not null
-        int dateComparison = expiryDate.compareTo(other.expiryDate);
+        // If neither expiryDate is null, compare them directly
+        int dateComparison = this.expiryDate.compareTo(other.expiryDate);
         if (dateComparison != 0) return dateComparison;
 
-        // Handle null name
-        if (name == null && other.name != null) return -1;
-        if (name != null && other.name == null) return 1;
-        if (name == null && other.name == null) return 0;
+        // Compare by name next, handling potential nulls as before
+        if (this.name == null && other.name != null) return -1;
+        if (this.name != null && other.name == null) return 1;
+        if (this.name == null && other.name == null) return 0;
 
-        // Compare by name when both are not null
-        return name.compareTo(other.name);
+        return this.name.compareTo(other.name);
     }
 }
